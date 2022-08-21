@@ -1,0 +1,28 @@
+#include<opencv2\opencv.hpp>
+#include<iostream>
+
+
+using namespace cv;
+using namespace std;
+  
+
+find_red_blue()
+{
+	Mat dst = imread("C:\\Users\\86183\\Pictures\\Screenshots\\屏幕截图 2022-08-21 004404.png");
+	imshow("魔方原图", dst);
+	Mat hsv, redadderse,blueadderse;
+	cvtColor(dst, hsv, COLOR_BGR2HSV);
+	imshow("hsv图像", hsv);
+	inRange(hsv, Scalar(156, 43, 46), Scalar(180, 255, 255), redadderse);
+	imshow("红色方块位置", redadderse);
+	inRange(hsv, Scalar(100, 43, 46), Scalar(124, 255, 255), blueadderse);
+	imshow("蓝色方块位置", blueadderse);
+}
+
+int main(int arg,char** argv)
+{
+	find_red_blue();
+		waitKey(0);
+	destroyAllWindows();
+	return 0;
+}
